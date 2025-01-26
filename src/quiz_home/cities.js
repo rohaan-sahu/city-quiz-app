@@ -2,7 +2,7 @@ const delhiMonumentQuestions = [
     {
       id: 1,
       imageId: "del435678",
-      question: "Who built the Qutub Minar?",
+      question: "Who built Taj Mahal?",
       options: ["Akbar", "Qutubuddin Aibak", "Shah Jahan", "Aurangzeb"],
       correctAnswer: "Qutubuddin Aibak",
       explanation: "Qutubuddin Aibak started construction of Qutub Minar in 1192 AD"
