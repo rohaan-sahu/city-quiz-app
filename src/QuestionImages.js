@@ -19,12 +19,14 @@ function getRandomQuizArray(array, count = 10) {
 
   while (result.length < count) {
     // Generate random index
+    //console.log(Math.random() * array.length , array.length)
     const randomIndex = Math.floor(Math.random() * array.length);
     
     // Only add if this index hasn't been selected before
     if (!selectedIndices.has(randomIndex)) {
       selectedIndices.add(randomIndex);
       result.push({qid: `q${result.length + 1}`,...array[randomIndex]});
+      //console.log(selectedIndices )
     }
   }
 
@@ -229,7 +231,7 @@ let randomQuizImageArray = addImagesToQuiz(randomQuizArray, imageArray);
 //export default imageArray;
 //export { kolkataQuizQuestions, delhiQuizQuestions, mumbaiQuizQuestions };
 //export default randomQuizImageArray
-//console.log(mainQuizArray)
+//console.log(mainQuizArray.length)
 console.log(randomQuizImageArray)
 
 export default randomQuizImageArray

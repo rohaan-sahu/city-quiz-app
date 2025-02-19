@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent, Typography, Box, Modal, Paper,Button } from '@mui/material';
 
-const ScoreCard = ({ score, totalQuestions, currentQuestionIndex }) => {
+const ScoreCard = ({ score, totalQuestions, currentQuestionIndex, primaryColor, secondaryColor }) => {
   // Check if quiz is completed
   const isQuizCompleted = currentQuestionIndex >= totalQuestions-1;
 
@@ -32,27 +32,32 @@ const ScoreCard = ({ score, totalQuestions, currentQuestionIndex }) => {
             backgroundColor: 'rgba(255,255,255,0.9)'
           }}
         >
-          <Typography variant="h4" color="primary" gutterBottom>
+          <Typography variant="h4" sx={{ color: primaryColor }} gutterBottom>
             Thank You!
           </Typography>
-          <Typography variant="h5" color="secondary" sx={{ mb: 2 }}>
+          <Typography variant="h5" sx={{ color: secondaryColor, mb: 2 }}>
             Quiz Completed
           </Typography>
           <Typography variant="h6">
             Your Score
           </Typography>
-          <Typography variant="h4" color="primary">
+          <Typography variant="h4" sx={{ color: primaryColor }}>
             {score} / {totalQuestions}
           </Typography>
           <br/><br/><br/>
           <Button 
-          variant="contained" 
-          color="primary" 
-          onClick={handleRestartQuiz}
-          sx={{ width: '80%' }}
-        >
-          Restart Quiz
-        </Button>
+            variant="contained" 
+            onClick={handleRestartQuiz}
+            sx={{ 
+              width: '80%',
+              backgroundColor: primaryColor,
+              '&:hover': {
+                backgroundColor: secondaryColor
+              }
+            }}
+          >
+            Restart Quiz
+          </Button>
         </Paper>
       </Modal>
     );
@@ -64,12 +69,16 @@ const ScoreCard = ({ score, totalQuestions, currentQuestionIndex }) => {
       width: '100%', 
       maxWidth: 300, 
       margin: 'auto', 
-      marginTop: 2 
+      marginTop: 2,
+      border: '3px solid #381506',
+      boxShadow: 'none',
+      backgroundColor: 'rgba(255, 255, 255, 0.8)',
+      borderRadius: 2
     }}>
       <CardContent>
         <Typography 
           variant="h6" 
-          color="primary" 
+          sx={{ color: primaryColor }}
           align="center"
         >
           Current Score
@@ -82,7 +91,7 @@ const ScoreCard = ({ score, totalQuestions, currentQuestionIndex }) => {
         >
           <Typography 
             variant="h4" 
-            color="secondary"
+            sx={{ color: secondaryColor }}
           >
             {score} / {totalQuestions}
           </Typography>
