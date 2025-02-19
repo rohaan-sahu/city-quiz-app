@@ -45,10 +45,12 @@ function App() {
   return (
     <Box display="flex" flexDirection="column" alignItems="center" p={4} sx={{ 
       backgroundImage: `url(${bg})`,
-      backgroundSize: 'cover',
+      backgroundSize: 'cover' ,
+      backgroundPosition: 'bottom left',
       minHeight: '100vh',
       position: 'relative',
       zIndex: 0 
+      
     }}>
       {/* Progress Bar */}
 <LinearProgress 
@@ -58,9 +60,13 @@ function App() {
     width: '100%', 
     maxWidth: 600, 
     mb: 4,
+    height: 10,
+    borderRadius: 5,
+    border: '1px solid #763004',
     '& .MuiLinearProgress-bar': {
-      backgroundColor: '#381506' // Custom color
-    }
+      backgroundColor: '#763004' // Custom color
+    },
+    backgroundColor: '#FCC96E'
   }} 
 />
       {/* Layout container */}
