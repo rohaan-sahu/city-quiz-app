@@ -145,7 +145,6 @@ function App() {
               <CardContent sx={{ backgroundColor: 'transparent' }}>
                 <Typography variant="h6" gutterBottom>
                   {questions_10[currentQuestionIndex].question}
-                  hello hello hello
                 </Typography>
                 <FormControl component="fieldset">
                   <RadioGroup value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)}>
