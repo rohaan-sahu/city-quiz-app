@@ -73,18 +73,23 @@ function App() {
       <Box sx={{ 
         width: '100%',
         display: 'flex',
-        justifyContent: 'flex-end', // Changed from space-between
+        justifyContent: 'flex-end',
         alignItems: 'flex-start',
-        padding: '6px'
+        padding: '4px',
+        transform: 'scale(1.1)',
+        transformOrigin: 'center top'
       }}>
         {/* Left side fixed elements */}
         <Box sx={{ 
           position: 'fixed', 
-          left: '6px', 
+          left: '20px',  // Increased left spacing to prevent cutoff
+          top: '20px',   // Added top spacing
           display: 'flex',
           flexDirection: 'column',
           gap: '6px',
-          zIndex: 1 
+          zIndex: 1,
+          transform: 'scale(1)',  // Removed scaling from this element since parent scaling affects it
+          transformOrigin: 'left top'
         }}>
           <HuntTextCard />
         </Box>
@@ -94,7 +99,9 @@ function App() {
           display: 'flex',
           flexDirection: 'column',
           gap: '6px',
-          zIndex: 2 
+          zIndex: 2,
+          transform: 'scale(1.1)',
+          transformOrigin: 'right top'
         }}>
           <QuizNameCard/>
           <ScoreCard 
@@ -111,9 +118,9 @@ function App() {
           flex: 1,
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'flex-end', // Changed from center
-          marginLeft: '200px', // Keep margin from HuntTextCard
-          maxWidth: '600px' // Added to control width
+          alignItems: 'flex-end',
+          marginLeft: '220px',
+          maxWidth: '660px'
         }}>
           
 

@@ -23,9 +23,11 @@ const QuizNameCard= () => {
         width: '200px',  // or any size you prefer
         height: '200px',
         backgroundImage: `url(${heading})`,
-        backgroundSize: '89%' ,
+        backgroundSize: '99%' ,
         backgroundPosition: 'left' ,
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
+        transform: 'scale(1.3)',
+        marginBottom: '40px'
       }}></Card>
     )
 }
