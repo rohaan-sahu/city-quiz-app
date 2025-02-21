@@ -19,9 +19,9 @@ function CorrectOrNot({ selectedAnswer, correctAnswer, showFeedback }) {
       backgroundColor: isCorrect ? 'rgba(76, 175, 80, 0.1)' : 'rgba(211, 47, 47, 0.1)'
     }}>
       {isCorrect ? (
-        <CheckCircleIcon sx={{ color: '#4caf50' }} />
+        <CheckCircleIcon sx={{ color: '#C88430' }} />
       ) : (
-        <CancelIcon sx={{ color: '#d32f2f' }} />
+        <CancelIcon sx={{ color: '#956103' }} />
       )}
       <Typography>
         {isCorrect 
