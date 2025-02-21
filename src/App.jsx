@@ -7,6 +7,7 @@ import bg from './assets/bg.jpg'
 import { HuntTextCard, QuizCard, QuizNameCard } from './components/Cards';
 import { Question } from './components/Question';
 import shape from './assets/shape.png';
+import CorrectOrNot from './components/correctOrNot';
 
 let questions_10 = [];
 questions_10 = randomQuizImageArray;
@@ -16,25 +17,33 @@ function App() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [answers, setAnswers] = useState([]);
   const [score ,setScore] = useState(0);
-
+  const [showFeedback, setShowFeedback] = useState(false);
 
   const handleNext = () => {
     if (selectedOption !== null) {
-      console.log(selectedOption,questions_10[currentQuestionIndex].correctAnswer)
-      if (selectedOption ===  questions_10[currentQuestionIndex].correctAnswer){
-        setScore(score + 1)
-      }
-      console.log(score)
-      setAnswers([{ question: questions_10[currentQuestionIndex].question,correct: questions_10[currentQuestionIndex].correctAnswer , answer: selectedOption }]);
-      setSelectedOption(null);
-      if (currentQuestionIndex + 1 < questions_10.length) {
-        setCurrentQuestionIndex(currentQuestionIndex + 1);
-      } 
-      else if (currentQuestionIndex + 1 >= questions_10.length) {
-        console.log("Survey completed!");
-        console.log(answers);
+      // Show feedback first
+      setShowFeedback(true);
+      
+      // Update score if correct
+      if (selectedOption === questions_10[currentQuestionIndex].correctAnswer) {
+        setScore(score + 1);
       }
 
+      // Add to answers array
+      setAnswers([{ 
+        question: questions_10[currentQuestionIndex].question,
+        correct: questions_10[currentQuestionIndex].correctAnswer, 
+        answer: selectedOption 
+      }]);
+
+      // Move to next question after a short delay
+      setTimeout(() => {
+        setShowFeedback(false);
+        setSelectedOption(null);
+        if (currentQuestionIndex + 1 < questions_10.length) {
+          setCurrentQuestionIndex(currentQuestionIndex + 1);
+        }
+      }, 1500);  // 1.5 second delay
     }
   };
 
@@ -147,20 +156,49 @@ function App() {
             <Card sx={{ 
               width: '100%',
               backgroundColor: 'transparent',
-              boxShadow: 'none'
+              boxShadow: 'none',
+              transform: 'scale(0.95)'  // Making content slightly smaller
             }}>
               <CardMedia
                 component='img'
-                height='250px' // Reduced height to fit within shape
+                height='280px'
                 image={currentImageUrl}
                 alt={currentImageDescription}
               />
-              <CardContent sx={{ backgroundColor: 'transparent' }}>
-                <Typography variant="h6" gutterBottom>
+              
+              {/* Feedback box */}
+              <Box sx={{ 
+                height: '60px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <CorrectOrNot 
+                  selectedAnswer={selectedOption}
+                  correctAnswer={questions_10[currentQuestionIndex].correctAnswer}
+                  showFeedback={showFeedback}
+                />
+              </Box>
+              
+              <CardContent sx={{ 
+                backgroundColor: 'transparent',
+                py: 1,  // Reduced padding top and bottom (default is 2),
+                paddingTop: 0,
+              }}>
+                <Typography variant="h6" gutterBottom sx={{ mb: 1 }}>  {/* Reduced margin bottom */}
                   {questions_10[currentQuestionIndex].question}
                 </Typography>
-                <FormControl component="fieldset">
-                  <RadioGroup value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)}>
+                <FormControl component="fieldset" sx={{ width: '100%' }}>
+                  <RadioGroup 
+                    value={selectedOption} 
+                    onChange={(e) => setSelectedOption(e.target.value)}
+                    sx={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(2, 1fr)',
+                      gap: 1,  // Reduced gap between options from 2 to 1
+                      width: '100%'
+                    }}
+                  >
                     {questions_10[currentQuestionIndex].options.map((option, index) => (
                       <FormControlLabel 
                         key={index} 
@@ -173,7 +211,7 @@ function App() {
                                 color: '#b26618',
                               },
                               '& .MuiSvgIcon-root': {
-                                fontSize: 20, // Optional: adjust size if needed
+                                fontSize: 20,
                               }
                             }}
                           />
