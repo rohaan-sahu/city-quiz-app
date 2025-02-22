@@ -1,4 +1,4 @@
-# India Quiz 🇮🇳  
+# India Quiz  
 
 Check out the Quiz at: [QuizMonkey](https://quizmonkey.netlify.app/)  
 
