@@ -1,8 +1,7 @@
-# React + Vite
+# India Quiz
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Check out the Quiz at : https://quizmonkey.netlify.app/
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Built using Vite(React) & Material UI .
+Uses images and factoids to ask questions about 19th & 20th century India.
+Source of info: https://www.past-india.com/
